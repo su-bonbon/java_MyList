@@ -101,7 +101,8 @@ public class MyArrayList {
             // Insert the element in the hash map
             mp.put(list[i], i);
         }
-		String[] temp =  mp.keySet().toArray(new String[mp.size()]);
+		String[] temp =  mp.keySet().toArray(new String[capacity]);
 		list = temp;
+		size = mp.size();
 	}
 }
