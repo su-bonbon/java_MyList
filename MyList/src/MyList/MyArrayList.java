@@ -1,4 +1,5 @@
 package MyList;
+import java.util.HashMap;
 
 public class MyArrayList {
 	private String[] list;
@@ -45,9 +46,6 @@ public class MyArrayList {
 		} else {
 			System.out.println(key + " is not in the list");
 		}
-	}
-	public void addFirst() {
-		
 	}
 	// element to the end of the list (natural)
 	public void addLast(String str) {
@@ -98,6 +96,12 @@ public class MyArrayList {
 		System.out.println();
 	}
 	public void removewDuplicate() {
-		
+		HashMap<String, Integer> mp = new HashMap<>();
+		for (int i = 0; i < size; i++) {
+            // Insert the element in the hash map
+            mp.put(list[i], i);
+        }
+		String[] temp =  mp.keySet().toArray(new String[mp.size()]);
+		list = temp;
 	}
 }
