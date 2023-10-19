@@ -6,6 +6,10 @@ public class MyLinkedList {
 	MyNode last;
 	int size;
 	
+	public MyLinkedList() {
+		first = last = null;
+	}
+	
 	public String getFirst() {
 		return first.element;
 	}
@@ -133,7 +137,7 @@ class MyNode{
 	MyNode(String element){
 		this.element = element;
 	}
-	String getElement(){
+	public String getElement(){
 		return element;
 	}
 	public void setNext(MyNode first) {
