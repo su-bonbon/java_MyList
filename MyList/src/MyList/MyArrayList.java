@@ -1,7 +1,7 @@
 package MyList;
 import java.util.HashMap;
 
-public class MyArrayList {
+public class MyArrayList implements MyList {
 	private String[] list;
 	private int capacity = 4;
 	private int size;
@@ -34,7 +34,7 @@ public class MyArrayList {
 		}
 	}
 	public void removeFirst(String key) {
-		int index = search(key);
+		int index = find(key);
 		if(index != -1) {
 			for(int i = index + 1; i < size; i++) {
 				list[i-1] = list[i];
@@ -70,12 +70,13 @@ public class MyArrayList {
 			return list[index];
 		} else return "select valid value";
 	}
-	public int search(String key) {
+	public int find(String key) {
 		for(int i = 0; i < size; i++) {
 			if(list[i].equals(key)) return i;
 		} 
 		return -1;
 	}
+	
 	// we have to refactor it later 
 	private void resize(int capacity) {
 		this.capacity = capacity;
@@ -104,5 +105,18 @@ public class MyArrayList {
 		String[] temp =  mp.keySet().toArray(new String[capacity]);
 		list = temp;
 		size = mp.size();
+	}
+	@Override
+	public void addFirst(String s) {
+		this.addFirst(s, 0);
+		
+	}
+	@Override
+	public void removeFirst() {
+		this.removeFirst(this.getElement(0));
+	}
+	@Override
+	public boolean search(String s) {
+		return (find(s) != -1);
 	}
 }

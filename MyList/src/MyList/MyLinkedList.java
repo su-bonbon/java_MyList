@@ -1,6 +1,6 @@
 package MyList;
 
-public class MyLinkedList {
+public class MyLinkedList implements MyList{
 
 	MyNode first;
 	MyNode last;
