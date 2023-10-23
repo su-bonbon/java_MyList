@@ -31,4 +31,7 @@ public class MyStack {
 		return stack.search(key);
 	}
 	
+	public void print() {
+		stack.print();
+	}
 }
