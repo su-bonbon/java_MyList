@@ -10,4 +10,8 @@ public class MyQueue {
 	public void deQueue() {
 		queue.removeFirst();
 	}
+	
+	public void print() {
+		queue.print();
+	}
 }
