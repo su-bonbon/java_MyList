@@ -14,4 +14,10 @@ public class MyQueue {
 	public void print() {
 		queue.print();
 	}
+	public boolean search(String s) {
+		return queue.search(s);
+	}
+	public boolean isEmpty() {
+		return queue.isEmpty();
+	}
 }
