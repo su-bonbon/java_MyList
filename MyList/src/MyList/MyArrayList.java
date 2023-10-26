@@ -1,18 +1,18 @@
 package MyList;
 import java.util.HashMap;
 
-public class MyArrayList implements MyList {
-	private String[] list;
+public class MyArrayList<E> implements MyList<E> {
+	private Object[] list;
 	private int capacity = 4;
 	private int size;
 	
 	public MyArrayList() {
-		this.list = new String[this.capacity];
+		this.list = new Object[this.capacity];
 	}
 	public MyArrayList(int capacity) {
 		if(capacity > 4)
 			this.capacity = capacity;
-		this.list = new String[this.capacity];
+		this.list = new Object[this.capacity];
 	}
 	public int getSize() {
 		return this.size;
@@ -20,7 +20,7 @@ public class MyArrayList implements MyList {
 	public boolean isEmpty() {
 		return this.getSize() == 0;
 	}
-	public void addFirst(String s, int index) {
+	public void addFirst(E s, int index) {
 		if(index >=0 && index <= size) {
 			if(size >= capacity) resize(this.capacity * 2);
 			for (int i = size -1; i >= index; i--) {
@@ -33,8 +33,8 @@ public class MyArrayList implements MyList {
 			System.out.print("select valid value");
 		}
 	}
-	public void removeFirst(String key) {
-		int index = find(key);
+	public void removeFirst(Object object) {
+		int index = find(object);
 		if(index != -1) {
 			for(int i = index + 1; i < size; i++) {
 				list[i-1] = list[i];
@@ -42,13 +42,13 @@ public class MyArrayList implements MyList {
 			size--;
 			list[size] = null;
 			if(size != 0 && capacity/size >= 4) resize(this.capacity/2);
-			System.out.println(key + "removed");
+			System.out.println(object + "removed");
 		} else {
-			System.out.println(key + " is not in the list");
+			System.out.println(object + " is not in the list");
 		}
 	}
 	// element to the end of the list (natural)
-	public void addLast(String str) {
+	public void addLast(E str) {
 		if(size >= capacity) resize(this.capacity * 2);
 		list[size] = str;
 		size++;
@@ -57,7 +57,7 @@ public class MyArrayList implements MyList {
 		
 		if(!isEmpty()) {
 			size--;
-			String temp = list[size];
+			Object temp = list[size];
 			list[size] = null;
 			if(size != 0 && capacity/size >= 4) resize(this.capacity/2);
 			System.out.print(temp + "removed");
@@ -65,12 +65,12 @@ public class MyArrayList implements MyList {
 			System.out.print("list is empty!");
 		}
 	}
-	public String getElement(int index) {
+	public Object getElement(int index) {
 		if(index >= 0 && index <= this.size) {
 			return list[index];
 		} else return "select valid value";
 	}
-	public int find(String key) {
+	public int find(Object key) {
 		for(int i = 0; i < size; i++) {
 			if(list[i].equals(key)) return i;
 		} 
@@ -81,7 +81,7 @@ public class MyArrayList implements MyList {
 	private void resize(int capacity) {
 		this.capacity = capacity;
 		
-		String temp [] = list;
+		Object temp [] = list;
 		list = new String[capacity * 2];
 		
 		for(int i = 0; i < size; i++) {
@@ -97,7 +97,7 @@ public class MyArrayList implements MyList {
 		System.out.println();
 	}
 	public void removewDuplicate() {
-		HashMap<String, Integer> mp = new HashMap<>();
+		HashMap<Object, Integer> mp = new HashMap<>();
 		for (int i = 0; i < size; i++) {
             // Insert the element in the hash map
             mp.put(list[i], i);
@@ -107,7 +107,7 @@ public class MyArrayList implements MyList {
 		size = mp.size();
 	}
 	@Override
-	public void addFirst(String s) {
+	public void addFirst(E s) {
 		this.addFirst(s, 0);
 		
 	}
@@ -116,7 +116,7 @@ public class MyArrayList implements MyList {
 		this.removeFirst(this.getElement(0));
 	}
 	@Override
-	public boolean search(String s) {
+	public boolean search(E s) {
 		return (find(s) != -1);
 	}
 }

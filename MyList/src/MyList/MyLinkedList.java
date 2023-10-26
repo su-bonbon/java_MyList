@@ -1,20 +1,20 @@
 package MyList;
 
-public class MyLinkedList implements MyList{
+public class MyLinkedList<E> implements MyList<E>{
 
-	MyNode first;
-	MyNode last;
+	MyNode<E> first;
+	MyNode<E> last;
 	int size;
 	
 	public MyLinkedList() {
 		first = last = null;
 	}
 	
-	public String getFirst() {
+	public E getFirst() {
 		return first.element;
 	}
 	
-	public String getLast() {
+	public Object getLast() {
 		return last.getElement();
 	}
 	
@@ -27,8 +27,8 @@ public class MyLinkedList implements MyList{
 	}
 	
 	// O(1)
-	public void addFirst(String s) {
-		MyNode newNode = new MyNode(s);
+	public void addFirst(E s) {
+		MyNode<E> newNode = new MyNode<E>(s);
 		if (isEmpty()) {
 			last = newNode;
 		} else {
@@ -39,8 +39,8 @@ public class MyLinkedList implements MyList{
 	}
 	
 	// O(1)
-	public void addLast(String s) {
-		MyNode newNode = new MyNode(s);
+	public void addLast(E s) {
+		MyNode<E> newNode = new MyNode<E>(s);
 		if(isEmpty()){
 			first = newNode;
 		}else{
@@ -53,7 +53,7 @@ public class MyLinkedList implements MyList{
 	
 	public void removeFirst(){
 		if(!isEmpty()){
-			String temp = first.getElement();
+			Object temp = first.getElement();
 			if(first == last){
 				first = null;
 				last = null;
@@ -70,11 +70,11 @@ public class MyLinkedList implements MyList{
 	// O(n)
 	public void removeLast(){
 		if(!isEmpty()){
-			String temp = last.getElement();
+			Object temp = last.getElement();
 			if(last == first){
 				last = first = null;
 			}else{
-				MyNode prev = first;
+				MyNode<E> prev = first;
 				while(prev.getNext() != last){
 					prev = prev.getNext();
 				}
@@ -88,18 +88,18 @@ public class MyLinkedList implements MyList{
 		}
 	}
 	
-	public boolean search(String key){
-		MyNode pointer = first;
+	public boolean search(E key){
+		MyNode<E> pointer = first;
 		while(pointer != null && pointer.getNext().equals(key)){
 			pointer = pointer.getNext();
 		}
 		return pointer != null;
 	}
 	
-	public void remove(String key) {
+	public void remove(E key) {
 		if (search(key)) {
-			MyNode prev = first;
-			MyNode curr = first;
+			MyNode<E> prev = first;
+			MyNode<E> curr = first;
 			while (curr != null && !curr.getElement().equals(key)) {
 				prev = curr;
 				curr = curr.getNext();
@@ -119,7 +119,7 @@ public class MyLinkedList implements MyList{
 	}
 	
 	public void print(){
-		MyNode pointer = first;
+		MyNode<E> pointer = first;
 		if(!isEmpty()) {
 			System.out.println(" | ");
 			while (pointer != null) {
@@ -129,20 +129,21 @@ public class MyLinkedList implements MyList{
 			System.out.println();
 		}
 	}
+
 }
 
-class MyNode{
-	String element;
-	MyNode next;
-	MyNode(String element){
+class MyNode<E>{
+	E element;
+	MyNode<E> next;
+	MyNode(E element){
 		this.element = element;
 	}
-	public String getElement(){
+	public Object getElement(){
 		return element;
 	}
-	public void setNext(MyNode first) {
+	public void setNext(MyNode<E> first) {
 	}
-	public MyNode getNext() {
+	public MyNode<E> getNext() {
 		return next;
 	}
 }

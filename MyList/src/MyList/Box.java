@@ -1,12 +1,12 @@
 package MyList;
 
-public class Box {
+public class Box<T> {
 
-	private Object item;
-	public void setItem(Object item) {
+	private T item;
+	public void setItem(T item) {
 		this.item = item;
 	}
-	public Object getItem() {
+	public T getItem() {
 		return item;
 	}
 
@@ -15,6 +15,9 @@ public class Box {
 		Box b = new Box();
 		b.setItem("abc");
 		
-		int a = (int) b.getItem();
+		String a = (String) b.getItem();
+		
+		Box<Integer> c = new Box<Integer>();
+		c.setItem(1);
 	}
 }

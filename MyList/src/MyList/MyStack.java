@@ -1,11 +1,11 @@
 package MyList;
 
-public class MyStack {
+public class MyStack<E> {
 	int top;
 	
-	MyLinkedList stack = new MyLinkedList();
+	MyLinkedList<E> stack = new MyLinkedList<E>();
 	
-	public void push(String s) {
+	public void push(E s) {
 		stack.addFirst(s);
 		top = getSize();
 	}
@@ -15,7 +15,7 @@ public class MyStack {
 		top = getSize();
 	}
 	
-	public String peek() {
+	public E peek() {
 		return stack.getFirst();
 	}
 	
@@ -27,7 +27,7 @@ public class MyStack {
 		return stack.getSize();
 	}
 	
-	public boolean search (String key) {
+	public boolean search (E key) {
 		return stack.search(key);
 	}
 	
