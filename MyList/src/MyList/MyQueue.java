@@ -1,9 +1,9 @@
 package MyList;
 
-public class MyQueue {
-	MyLinkedList queue = new MyLinkedList();
+public class MyQueue<E> {
+	MyLinkedList<E> queue = new MyLinkedList<E>();
 	
-	public void enQueue(String s) {
+	public void enQueue(E s) {
 		queue.addLast(s);
 	}
 	
@@ -14,7 +14,7 @@ public class MyQueue {
 	public void print() {
 		queue.print();
 	}
-	public boolean search(String s) {
+	public boolean search(E s) {
 		return queue.search(s);
 	}
 	public boolean isEmpty() {

@@ -135,7 +135,7 @@ public class MyLinkedList<E> implements MyList<E>{
 class MyNode<E>{
 	E element;
 	MyNode<E> next;
-	MyNode(E element){
+	public MyNode(E element){
 		this.element = element;
 	}
 	public Object getElement(){
