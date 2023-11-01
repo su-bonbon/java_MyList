@@ -1,7 +1,7 @@
 package MyList;
 
 public class MyQueue<E> {
-	MyLinkedList<E> queue = new MyLinkedList<E>();
+	private MyLinkedList<E> queue = new MyLinkedList<E>();
 	
 	public void enQueue(E s) {
 		queue.addLast(s);
