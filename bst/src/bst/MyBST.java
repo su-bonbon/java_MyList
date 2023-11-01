@@ -55,8 +55,34 @@ public class MyBST<E extends Comparable<E>> {
 		if(current != null) {
 			dfs(current.left);
 			System.out.print(current.element + " ");
-			dfs(current.rught);
+			dfs(current.right);
 		}
+		
+	}
+	
+	public boolean delete(E element) {
+		if(!isEmpty() && search(element)) {
+			//start case1
+			MyTreeNode<E> current = root;
+			MyTreeNode<E> parent = root;
+			
+			while(current != null) {
+				if(element.compareTo(current.element) < 0) {
+					parent = current;
+					current = current.left;
+				} else if (element.compareTo(current.element) > 0) {
+					parent = current;
+					current = current.right;
+				} else break;
+			}
+			
+			if(current.left == null) { //case1
+				
+			} else { //case2
+				
+			}
+		}
+		
 		
 	}
 }

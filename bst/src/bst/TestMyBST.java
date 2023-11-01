@@ -14,6 +14,8 @@ public class TestMyBST {
 		bst.insert(28);
 		bst.print();
 		
+		System.out.print(bst.search(99));
+		
 	}
 
 }
