@@ -55,6 +55,7 @@ public class MyBST<E extends Comparable<E>> {
 		if(current != null) {
 			dfs(current.left);
 			System.out.print(current.element + " ");
+			dfs(current.rught);
 		}
 		
 	}
