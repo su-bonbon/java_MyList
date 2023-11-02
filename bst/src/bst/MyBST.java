@@ -6,7 +6,9 @@ public class MyBST<E extends Comparable<E>> {
 	public boolean isEmpty() {
 		return root == null;
 	}
-	
+	public void getRoot () {
+		System.out.print(root!=null? root.element:"root is null" );
+	}
 	public boolean insert(E element) {
 		MyTreeNode<E> newTreeNode = new MyTreeNode<E>(element);
 		
@@ -77,13 +79,31 @@ public class MyBST<E extends Comparable<E>> {
 			}
 			
 			if(current.left == null) { //case1
+				if(current == root) {
+					root = current.right;
+				} else if(element.compareTo(parent.element) < 0) {
+					parent.left = current.right;
+				} else {
+					parent.right = current.right;
+				}
 				
 			} else { //case2
+				MyTreeNode<E> rightMost = current.left;
+				MyTreeNode<E> parentOfrightMost = current;
 				
-			}
-		}
-		
-		
+				while(rightMost.right != null) {
+					parentOfrightMost = rightMost;
+					rightMost = rightMost.right;
+				}
+				current.element = rightMost.element;
+				
+				if(rightMost.equals(current.left)) {
+					parentOfrightMost.left = rightMost.left; // b
+				} else {
+					parentOfrightMost.right = rightMost.left; // b
+				}
+			}return true;
+		}return false;
 	}
 }
 

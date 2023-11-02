@@ -16,6 +16,8 @@ public class TestMyBST {
 		
 		System.out.print(bst.search(99));
 		
+		bst.getRoot();
+		
 	}
 
 }
