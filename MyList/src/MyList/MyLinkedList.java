@@ -142,6 +142,7 @@ class MyNode<E>{
 		return element;
 	}
 	public void setNext(MyNode<E> first) {
+		
 	}
 	public MyNode<E> getNext() {
 		return next;
