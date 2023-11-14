@@ -9,7 +9,7 @@ public class MyBST<E extends Comparable<E>> {
 	public void getRoot () {
 		System.out.print(root!=null? root.element:"root is null" );
 	}
-	public boolean insert(E element) {
+	public boolean insert(E element) { //
 		MyTreeNode<E> newTreeNode = new MyTreeNode<E>(element);
 		
 		if(isEmpty()) {
@@ -37,7 +37,7 @@ public class MyBST<E extends Comparable<E>> {
 		} return false;
 	}
 	
-	public boolean search(E key) {
+	public boolean search(E key) { //O(logn)
 		MyTreeNode<E> current = root;
 		while(current != null) {
 			if(key.compareTo(current.element) < 0) {
@@ -53,11 +53,29 @@ public class MyBST<E extends Comparable<E>> {
 		dfs(root);
 	}
 
-	private void dfs(MyTreeNode<E> current) {
+	private void dfs(MyTreeNode<E> current) {  //dfs-preorder
 		if(current != null) {
 			dfs(current.left);
 			System.out.print(current.element + " ");
 			dfs(current.right);
+		}
+		
+	}
+	
+	private void dfs_inorder(MyTreeNode<E> current) {
+		if(current != null) {
+			dfs(current.left);
+			System.out.print(current.element + " ");
+			dfs(current.right);
+		}
+		
+	}
+	
+	private void dfs_postorder(MyTreeNode<E> current) {
+		if(current != null) {
+			dfs(current.left);
+			dfs(current.right);
+			System.out.print(current.element + " ");
 		}
 		
 	}
